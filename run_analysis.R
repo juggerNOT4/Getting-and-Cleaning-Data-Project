@@ -2,12 +2,12 @@ library(dplyr)
 library(readr)
 
 #Read the necessary files
-X_test <-  read.table("./test/X_test")
-y_test <-  read.table("./test/y_test")
-subject_test <-  read.table("./test/subject_test")
-X_train <-  read.table("./train/X_train")
-y_train <-  read.table("./train/y_train")
-subject_train <-  read.table("./train/subject_train")
+X_test <-  read.table("./test/X_test.txt")
+y_test <-  read.table("./test/y_test.txt")
+subject_test <-  read.table("./test/subject_test.txt")
+X_train <-  read.table("./train/X_train.txt")
+y_train <-  read.table("./train/y_train.txt")
+subject_train <-  read.table("./train/subject_train.txt")
 features <- read.table("features.txt")
 
 #merge the appropriate files using rbind
@@ -56,3 +56,4 @@ finaldata <- finaldata%>% summarize_all(mean)
 
 #view the final tidy data
 View(finaldata)
+write.table(finaldata, file = "finaldata.txt", row.names =  FALSE)
